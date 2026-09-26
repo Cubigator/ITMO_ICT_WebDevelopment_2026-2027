@@ -178,7 +178,3 @@ python3 server.py
 ```bash
 python3 client.py
 ```
-
-### Пример
-
-![Пример работы задания 5](images/task5.png)

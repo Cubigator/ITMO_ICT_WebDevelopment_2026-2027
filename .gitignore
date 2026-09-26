@@ -219,3 +219,7 @@ __marimo__/
 
 # mkdocs build output
 site/
+
+# macOS / IDE
+.DS_Store
+.idea/
