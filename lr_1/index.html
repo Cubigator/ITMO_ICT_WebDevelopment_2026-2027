@@ -51,10 +51,6 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_2">Задания</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">Оценивание</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_4">Используемые порты</a>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="task1/">Задание 1 - UDP</a>
@@ -97,85 +93,40 @@
 <h2 id="_1">Цель работы<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>Понять принципы межсокетного взаимодействия в вебе. Научиться реализовывать базовую
 архитектуру клиент-сервер.</p>
-<p>Все задания выполнены на стандартных модулях <code>socket</code> и <code>threading</code>. Клиент чата
-из задания 4 дополнительно использует библиотеку <code>colorama</code> для цветного вывода.</p>
 <h2 id="_2">Задания<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>№</th>
 <th>Тема</th>
-<th>Протокол</th>
 <th>Файлы</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="task1/">Обмен сообщениями «Hello»</a></td>
-<td>UDP</td>
+<td><a href="task1/">Обмен сообщениями по UDP</a></td>
 <td><code>task1/server.py</code>, <code>task1/client.py</code></td>
 </tr>
 <tr>
 <td>2</td>
-<td><a href="task2/">Вычисления через TCP (вариант 1 — теорема Пифагора)</a></td>
-<td>TCP</td>
+<td><a href="task2/">Вычисления через TCP</a></td>
 <td><code>task2/server.py</code>, <code>task2/client.py</code></td>
 </tr>
 <tr>
 <td>3</td>
 <td><a href="task3/">Раздача HTML-страницы по HTTP</a></td>
-<td>TCP / HTTP</td>
 <td><code>task3/server.py</code>, <code>task3/client.py</code>, <code>task3/index.html</code></td>
 </tr>
 <tr>
 <td>4</td>
 <td><a href="task4/">Многопользовательский чат</a></td>
-<td>TCP + потоки</td>
 <td><code>task4/server.py</code>, <code>task4/client.py</code></td>
 </tr>
 <tr>
 <td>5</td>
 <td><a href="task5/">Простой веб-сервер (GET/POST)</a></td>
-<td>TCP / HTTP</td>
 <td><code>task5/server.py</code>, <code>task5/client.py</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="_3">Оценивание<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>60% — выполнение заданий 1–4 и однопользовательского чата (без потоков).</li>
-<li>100% — выполнение заданий 1–5 и многопользовательского чата (с потоками).</li>
-</ul>
-<p>В работе выполнены задания 1–5 и многопользовательский чат на TCP с потоками.</p>
-<h2 id="_4">Используемые порты<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Задание</th>
-<th>Адрес</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>localhost:30000</code></td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>localhost:30001</code></td>
-</tr>
-<tr>
-<td>3</td>
-<td><code>localhost:30002</code></td>
-</tr>
-<tr>
-<td>4</td>
-<td><code>localhost:40000</code></td>
-</tr>
-<tr>
-<td>5</td>
-<td><code>localhost:45000</code></td>
 </tr>
 </tbody>
 </table>
