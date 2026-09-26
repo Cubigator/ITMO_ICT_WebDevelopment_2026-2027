@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Задание 3 - Раздача HTML-страницы - Web-программирование — Чуприн Сергей, K3339</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0417\u0430\u0434\u0430\u043d\u0438\u0435 3 - \u0420\u0430\u0437\u0434\u0430\u0447\u0430 HTML-\u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b";
+        var mkdocs_page_input_path = "lr_1/task3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Web-программирование — Чуприн Сергей, K3339
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Главная</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №1</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task1/">Задание 1 - UDP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task2/">Задание 2 - Вычисления через TCP</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Задание 3 - Раздача HTML-страницы</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">Задача</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Теория</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Код сервера</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#html-">HTML-страница</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">Код клиента</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">Запуск</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">Пример</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task4/">Задание 4 - Многопользовательский чат</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task5/">Задание 5 - Веб-сервер (GET/POST)</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Web-программирование — Чуприн Сергей, K3339</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Лабораторная работа №1</li>
+      <li class="breadcrumb-item active">Задание 3 - Раздача HTML-страницы</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027/edit/master/docs/lr_1/task3.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-html-http">Задание 3 - Раздача HTML-страницы по HTTP<a class="headerlink" href="#3-html-http" title="Permanent link">&para;</a></h1>
+<h3 id="_1">Задача<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>Реализовать серверную часть приложения. Клиент подключается к серверу и в ответ
+получает HTTP-сообщение, содержащее HTML-страницу, которую сервер подгружает
+из файла <code>index.html</code>.</p>
+<p>Требования:</p>
+<ul>
+<li>обязательно использовать библиотеку <code>socket</code>.</li>
+</ul>
+<h3 id="_2">Теория<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>HTTP работает поверх TCP и представляет собой текстовый протокол. Ответ сервера состоит из:</p>
+<ol>
+<li><strong>стартовой строки</strong> — версия протокола, код и текст статуса (<code>HTTP/1.1 200 OK</code>);</li>
+<li><strong>заголовков</strong> — например, <code>Content-Type</code> (тип содержимого) и <code>Content-Length</code>
+   (длина тела в байтах);</li>
+<li><strong>пустой строки</strong> (<code>\r\n</code>), отделяющей заголовки от тела;</li>
+<li><strong>тела</strong> — в данном случае содержимого HTML-файла.</li>
+</ol>
+<p>Сервер читает <code>index.html</code>, формирует заголовки, отправляет ответ одним сообщением
+и закрывает соединение. Поскольку ответ — корректное HTTP-сообщение, страницу
+можно открыть не только клиентским скриптом, но и в браузере.</p>
+<h3 id="_3">Код сервера<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import socket
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('localhost', 30_002))
+server.listen()
+
+while True:
+    socket_for_client, addr = server.accept()
+
+    with open('index.html', 'r') as file:
+        html = file.read().encode('utf-8')
+
+    headers = &quot;HTTP/1.1 200 OK\r\n&quot; \
+            &quot;Content-Type: text/html\r\n&quot; \
+            f&quot;Content-Length: {len(html)}\r\n&quot; \
+            &quot;\r\n&quot;.encode('utf-8')
+
+    socket_for_client.send(headers + html)
+
+    socket_for_client.close()
+</code></pre>
+<h3 id="html-">HTML-страница<a class="headerlink" href="#html-" title="Permanent link">&para;</a></h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Приветствие&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет!&lt;/h1&gt;
+    &lt;p&gt;Добро пожаловать на мою страницу.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="_4">Код клиента<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import socket
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+client.connect(('localhost', 30_002))
+
+print(client.recv(1024).decode('utf-8'))
+
+client.close()
+</code></pre>
+<h3 id="_5">Запуск<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Из папки <code>task3</code> (сервер открывает <code>index.html</code> по относительному пути):</p>
+<pre><code class="language-bash">python3 server.py
+</code></pre>
+<p>Затем в другом терминале:</p>
+<pre><code class="language-bash">python3 client.py
+</code></pre>
+<p>или открыть в браузере адрес <code>http://localhost:30002</code>.</p>
+<h3 id="_6">Пример<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="Пример работы задания 3" src="images/task3.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../task2/" class="btn btn-neutral float-left" title="Задание 2 - Вычисления через TCP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../task4/" class="btn btn-neutral float-right" title="Задание 4 - Многопользовательский чат">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../task2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../task4/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Задание 4 - Многопользовательский чат - Web-программирование — Чуприн Сергей, K3339</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0417\u0430\u0434\u0430\u043d\u0438\u0435 4 - \u041c\u043d\u043e\u0433\u043e\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0447\u0430\u0442";
+        var mkdocs_page_input_path = "lr_1/task4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Web-программирование — Чуприн Сергей, K3339
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Главная</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №1</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task1/">Задание 1 - UDP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task2/">Задание 2 - Вычисления через TCP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task3/">Задание 3 - Раздача HTML-страницы</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Задание 4 - Многопользовательский чат</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">Задача</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Теория</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Код сервера</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">Код клиента</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">Запуск</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">Пример</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task5/">Задание 5 - Веб-сервер (GET/POST)</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Web-программирование — Чуприн Сергей, K3339</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Лабораторная работа №1</li>
+      <li class="breadcrumb-item active">Задание 4 - Многопользовательский чат</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027/edit/master/docs/lr_1/task4.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-">Задание 4 - Многопользовательский чат<a class="headerlink" href="#4-" title="Permanent link">&para;</a></h1>
+<h3 id="_1">Задача<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>Реализовать двухпользовательский или многопользовательский чат. Для максимального
+количества баллов реализовать многопользовательский чат.</p>
+<p>Требования:</p>
+<ul>
+<li>обязательно использовать библиотеку <code>socket</code>;</li>
+<li>для многопользовательского чата необходимо использовать библиотеку <code>threading</code>;</li>
+<li>должна быть возможность идентифицировать пользователей;</li>
+<li>пользователь должен иметь возможность выйти из чата.</li>
+</ul>
+<p>Реализация на протоколе TCP оценивается в 100% баллов, на UDP — в 80%.
+В работе чат реализован на <strong>TCP</strong>.</p>
+<h3 id="_2">Теория<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Чат отличается от предыдущих заданий тем, что сервер обслуживает не одного клиента,
+а нескольких одновременно. Сервер держит список активных подключений и рассылает
+входящие сообщения всем, кроме отправителя.</p>
+<p>Операции <code>accept()</code> и <code>recv()</code> блокирующие: пока программа ждёт данные от одного
+клиента, она не может обслуживать других. Поэтому каждое подключение обрабатывается
+в отдельном потоке (<code>threading.Thread</code>).</p>
+<p><strong>Сервер:</strong></p>
+<ul>
+<li>в главном цикле принимает подключения и сохраняет сокет клиента в словарь
+  <code>all_clients</code>, где ключ — адрес клиента <code>(ip, порт)</code>;</li>
+<li>для каждого клиента запускает поток <code>chat_worker</code>, который читает сообщения
+  и рассылает их всем остальным участникам с указанием адреса отправителя;</li>
+<li>изменение общего словаря при удалении клиента защищено блокировкой <code>threading.Lock</code>.</li>
+</ul>
+<p><strong>Клиент</strong> тоже использует два потока:</p>
+<ul>
+<li>фоновый поток <code>get_answers</code> постоянно принимает сообщения от сервера и выводит
+  их красным цветом (библиотека <code>colorama</code>);</li>
+<li>основной поток читает ввод пользователя и отправляет его на сервер.
+  Команда <code>[выход]</code> закрывает соединение и завершает клиент.</li>
+</ul>
+<p><strong>Идентификация пользователей:</strong> каждое сообщение приходит остальным участникам
+с префиксом — адресом отправителя <code>(ip, порт)</code>, который уникален для каждого подключения.</p>
+<p>Клиент — один скрипт <code>client.py</code>, который каждый пользователь запускает как отдельный
+процесс. За одновременную работу нескольких подключений отвечает сервер.</p>
+<h3 id="_3">Код сервера<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import socket
+import threading
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('localhost', 40_000))
+server.listen()
+
+all_clients = dict()
+lock = threading.Lock()
+
+def chat_worker(client, address):
+    try:
+        while True:
+            message = client.recv(1024)
+            if not message:
+                break
+            else:
+                for addr in all_clients:
+                    if addr != address:
+                        text = f'{address}: {message.decode(&quot;utf-8&quot;)}'
+                        all_clients[addr].send(text.encode(&quot;utf-8&quot;))
+                print(f'{address}: {message.decode(&quot;utf-8&quot;)}')
+    except:
+        with lock:
+            all_clients.pop(address)
+        client.close()
+        print(f'{address} отключился')
+
+
+
+
+while True:
+    client, address = server.accept()
+    print(f'{address} подключился')
+    all_clients[address] = client
+
+    t = threading.Thread(target=chat_worker, args=(client, address))
+    t.start()
+</code></pre>
+<h3 id="_4">Код клиента<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import socket
+import threading
+from colorama import init, Fore, Style
+init()
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+client.connect(('localhost', 40_000))
+
+def get_answers():
+    while True:
+        try:
+            answer = client.recv(1024)
+            if not answer:
+                break
+            print(Fore.RED + answer.decode('utf-8') + Style.RESET_ALL)
+        except:
+            break
+
+t = threading.Thread(target=get_answers)
+t.start()
+
+while True:
+    message = input('')
+    if message == '[выход]':
+        client.close()
+        break
+    client.send(message.encode('utf-8'))
+</code></pre>
+<h3 id="_5">Запуск<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Клиенту нужна библиотека <code>colorama</code>:</p>
+<pre><code class="language-bash">pip install colorama
+</code></pre>
+<p>Из папки <code>task4</code> запустить сервер:</p>
+<pre><code class="language-bash">python3 server.py
+</code></pre>
+<p>Затем в нескольких терминалах запустить клиентов (один и тот же скрипт):</p>
+<pre><code class="language-bash">python3 client.py
+</code></pre>
+<h3 id="_6">Пример<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="Пример работы задания 4" src="images/task4.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../task3/" class="btn btn-neutral float-left" title="Задание 3 - Раздача HTML-страницы"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../task5/" class="btn btn-neutral float-right" title="Задание 5 - Веб-сервер (GET/POST)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../task3/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../task5/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

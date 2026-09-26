@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Задание 5 - Веб-сервер (GET/POST) - Web-программирование — Чуприн Сергей, K3339</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0417\u0430\u0434\u0430\u043d\u0438\u0435 5 - \u0412\u0435\u0431-\u0441\u0435\u0440\u0432\u0435\u0440 (GET/POST)";
+        var mkdocs_page_input_path = "lr_1/task5.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Web-программирование — Чуприн Сергей, K3339
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Главная</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №1</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task1/">Задание 1 - UDP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task2/">Задание 2 - Вычисления через TCP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task3/">Задание 3 - Раздача HTML-страницы</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../task4/">Задание 4 - Многопользовательский чат</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Задание 5 - Веб-сервер (GET/POST)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">Задача</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Теория</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Код сервера</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">Код клиента</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">Запуск</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">Пример</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Web-программирование — Чуприн Сергей, K3339</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Лабораторная работа №1</li>
+      <li class="breadcrumb-item active">Задание 5 - Веб-сервер (GET/POST)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027/edit/master/docs/lr_1/task5.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="5-getpost">Задание 5 - Простой веб-сервер (GET/POST)<a class="headerlink" href="#5-getpost" title="Permanent link">&para;</a></h1>
+<h3 id="_1">Задача<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>Написать простой веб-сервер для обработки GET и POST HTTP-запросов с помощью
+библиотеки <code>socket</code> в Python. Сервер должен:</p>
+<ul>
+<li>принимать и записывать информацию о дисциплине и оценке по дисциплине;</li>
+<li>отдавать информацию обо всех оценках по дисциплинам в виде HTML-страницы.</li>
+</ul>
+<p>Журнал группируется по предмету: если для одной дисциплины пришло несколько оценок,
+в хранилище должна быть одна запись с названием предмета и списком оценок.</p>
+<h3 id="_2">Теория<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Сервер разбирает входящий запрос вручную: делит его по <code>\r\n\r\n</code> на заголовки и тело,
+а по стартовой строке определяет метод.</p>
+<ul>
+<li><strong>GET</strong> — сервер формирует HTML-страницу с таблицей «Дисциплина — Оценки» и
+  возвращает её с кодом <code>200 OK</code>.</li>
+<li><strong>POST</strong> — тело запроса имеет вид <code>Предмет : оценка</code>. Сервер добавляет оценку
+  в словарь <code>marks</code> и отвечает кодом <code>201 Created</code>.</li>
+</ul>
+<p>Для группировки по предмету используется словарь: ключ — название дисциплины,
+значение — список оценок. Новая оценка по уже существующему предмету добавляется
+в его список, а не создаёт отдельную запись.</p>
+<p>Оценки хранятся в памяти процесса, поэтому после перезапуска сервера журнал пустой.</p>
+<p><strong>Клиент</strong> — консольное меню, которое формирует HTTP-запросы вручную:</p>
+<ol>
+<li>просмотреть все оценки — отправляет GET-запрос и выводит полученный ответ;</li>
+<li>добавить оценку — запрашивает предмет и оценку (допустимы значения 1–5)
+   и отправляет POST-запрос;</li>
+<li>выход.</li>
+</ol>
+<p>Клиент держит одно соединение с сервером на протяжении всей работы, а сервер
+обрабатывает запросы этого соединения в цикле, пока клиент не отключится.</p>
+<h3 id="_3">Код сервера<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import socket
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+server.bind(('localhost', 45_000))
+server.listen()
+
+marks = dict()
+
+def get(client):
+    print('get')
+    rows = &quot;&quot;
+    for sub in marks:
+        rows += f&quot;&lt;tr&gt;&lt;td&gt;{sub}&lt;/td&gt;&lt;td&gt;{marks[sub]}&lt;/td&gt;&lt;/tr&gt;&quot;
+    html = f&quot;&quot;&quot;
+    &lt;html lang=&quot;ru&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;Оценки по дисциплинам&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Оценки по дисциплинам&lt;/h1&gt;
+        &lt;table border=&quot;1&quot; cellpadding=&quot;6&quot;&gt;
+            &lt;tr&gt;&lt;th&gt;Дисциплина&lt;/th&gt;&lt;th&gt;Оценки&lt;/th&gt;&lt;/tr&gt;
+            {rows}
+        &lt;/table&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;&quot;&quot;&quot;
+
+    get_request_template = \
+        f&quot;&quot;&quot;
+        HTTP/1.1 200 OK\r\n
+        Content-Type: text/html\r\n
+        Content-Length: {len(html.encode('utf-8'))}\r\n\r\n
+        {html}
+        &quot;&quot;&quot;
+
+    client.send(get_request_template.encode('utf-8'))
+    print('get correct')
+
+
+def post(body, client):
+    print('post')
+    post_request_template = \
+        f&quot;&quot;&quot;
+        HTTP/1.1 201 Created\r\n
+        Content-Type: text/plain\r\n
+        Content-Length: {len(&quot;1&quot;.encode('utf-8'))}\r\n\r\n
+        1
+        &quot;&quot;&quot;
+    buf = body.decode('utf-8').strip().split(' : ')
+    if buf[0] in marks:
+        marks[buf[0]].append(buf[1])
+    else:
+        marks[buf[0]] = [buf[1]]
+    client.send(post_request_template.encode('utf-8'))
+    print('post correct')
+
+
+while True:
+    client, address = server.accept()
+    while True:
+        raw_request = client.recv(4096)
+        if not raw_request:
+            break
+        headers, _, body = raw_request.partition(b'\r\n\r\n')
+        if b'GET' in headers.split(b'\r\n')[0]:
+            get(client)
+        elif b'POST' in headers.split(b'\r\n')[0]:
+            post(body, client)
+    client.close()
+</code></pre>
+<h3 id="_4">Код клиента<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import socket
+import os
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(('localhost', 45_000))
+
+def get_marks(client):
+    get_request_template = \
+        &quot;&quot;&quot;
+        GET / HTTP/1.1\r\n
+        Host: localhost\r\n\r\n
+        &quot;&quot;&quot;
+    client.send(get_request_template.encode('utf-8'))
+    response = client.recv(4096)
+    print(response.decode('utf-8'))
+
+def add_mark(client):
+    subject = input('Введите предмет: ')
+    mark = input('Введите оценку (1-5): ').strip()
+    if mark not in ['1', '2', '3', '4', '5']:
+        return
+    body = f&quot;{subject} : {mark}&quot;
+    post_request_template = \
+        f&quot;&quot;&quot;
+        POST / HTTP/1.1\r\n
+        Host: localhost\r\n
+        Content-Length: {len(body.encode('utf-8'))}\r\n\r\n
+        {body}
+        &quot;&quot;&quot;
+    print('send')
+    client.send(post_request_template.encode('utf-8'))
+    response = client.recv(4096)
+    print(response.decode('utf-8'))
+
+while True:
+    os.system('clear')
+    print('Журнал оценок')
+    print('1. Просмотреть все оценки')
+    print('2. Добавить новую оценку')
+    print('0. Выход')
+    inp = input('Введите цифру -&gt; ')
+    if inp == '0':
+        break
+    if inp == '1':
+        get_marks(client)
+        input()
+    if inp == '2':
+        add_mark(client)
+        input()
+</code></pre>
+<h3 id="_5">Запуск<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Из папки <code>task5</code> в двух разных терминалах:</p>
+<pre><code class="language-bash">python3 server.py
+</code></pre>
+<pre><code class="language-bash">python3 client.py
+</code></pre>
+<h3 id="_6">Пример<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="Пример работы задания 5" src="images/task5.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../task4/" class="btn btn-neutral float-left" title="Задание 4 - Многопользовательский чат"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../task4/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
