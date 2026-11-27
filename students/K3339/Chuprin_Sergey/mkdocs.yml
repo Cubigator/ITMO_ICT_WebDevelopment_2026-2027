@@ -21,3 +21,8 @@ nav:
       - Описание: lr_2/index.md
       - Модель данных: lr_2/models.md
       - Интерфейсы: lr_2/interfaces.md
+  - Лабораторная работа №3:
+      - Описание: lr_3/index.md
+      - Модель данных: lr_3/models.md
+      - Реализация: lr_3/implementation.md
+      - Интерфейсы API: lr_3/interfaces.md
