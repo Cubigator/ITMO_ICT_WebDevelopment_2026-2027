@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Интерфейсы API - Web-программирование — Чуприн Сергей, K3339</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0418\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u044b API";
+        var mkdocs_page_input_path = "lr_3/interfaces.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Web-программирование — Чуприн Сергей, K3339
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Главная</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №1</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task1/">Задание 1 - UDP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task2/">Задание 2 - Вычисления через TCP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task3/">Задание 3 - Раздача HTML-страницы</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task4/">Задание 4 - Многопользовательский чат</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task5/">Задание 5 - Веб-сервер (GET/POST)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_2/">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_2/models/">Модель данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_2/interfaces/">Интерфейсы</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №3</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../models/">Модель данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../implementation/">Реализация</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Интерфейсы API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">Запуск</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Авторизация</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Каталог и справочники</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">Читатели</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">Экземпляры, выдачи и история</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">Аналитика и отчёт</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">Пример выдачи и возврата</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Web-программирование — Чуприн Сергей, K3339</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Лабораторная работа №3</li>
+      <li class="breadcrumb-item active">Интерфейсы API</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027/edit/master/docs/lr_3/interfaces.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api">Интерфейсы API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="_1">Запуск<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Для запуска нужны Python 3.12 и доступная база PostgreSQL. Из корня репозитория перейдите в папку работы и установите зависимости в виртуальное окружение.</p>
+<pre><code class="language-bash">cd students/K3339/Chuprin_Sergey/lr_3
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install 'Django&gt;=5.2,&lt;7' djangorestframework djoser 'psycopg[binary]' python-dotenv
+</code></pre>
+<p>Создайте пустую базу <code>library</code> и пользователя PostgreSQL с правами на создание таблиц в ней. Сохраните параметры подключения в файле <code>.env</code> рядом с <code>manage.py</code>. Имя пользователя и пароль в примере замените своими.</p>
+<pre><code class="language-dotenv">DB_NAME=library
+DB_USER=library_user
+DB_PASSWORD=your_local_password
+DB_HOST=localhost
+DB_PORT=5432
+</code></pre>
+<pre><code class="language-bash">python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+</code></pre>
+<p>Административный интерфейс Django доступен по адресу <code>http://127.0.0.1:8000/admin/</code>. Аккаунт, созданный командой <code>createsuperuser</code>, подходит для проверки библиотечного API.</p>
+<h2 id="_2">Авторизация<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>URL</th>
+<th>Входные данные и результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/auth/users/</code></td>
+<td><code>username</code>, <code>password</code>. Создаёт обычный аккаунт, возвращает профиль и статус 201.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/auth/token/login/</code></td>
+<td><code>username</code>, <code>password</code>. Возвращает <code>auth_token</code> и статус 200.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/auth/users/me/</code></td>
+<td>Заголовок с токеном. Возвращает профиль текущего пользователя.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/auth/token/logout/</code></td>
+<td>Заголовок с токеном. Удаляет текущий токен и возвращает статус 204.</td>
+</tr>
+</tbody>
+</table>
+<p>Для обращения к библиотечному API передаётся заголовок <code>Authorization: Token &lt;токен&gt;</code>. Доступ к операциям под <code>/api/</code> требует аккаунта с признаком <code>is_staff</code>. Запрос без токена получает статус 401, а запрос с токеном обычного пользователя — 403. Для JSON-тела указывается <code>Content-Type: application/json</code>.</p>
+<p><code>GET /api/</code> возвращает ссылки на коллекции. Методы для работы с каталогом, читателями и выдачами приведены ниже.</p>
+<h2 id="_3">Каталог и справочники<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>Для каждого ресурса в таблице действуют одни и те же методы. <code>GET</code> по пути коллекции возвращает список, <code>POST</code> создаёт запись со статусом 201. По пути с <code>{id}/</code> доступны просмотр (<code>GET</code>), полное обновление (<code>PUT</code>), частичное обновление (<code>PATCH</code>) и удаление (<code>DELETE</code>, при успехе 204). <code>{id}</code> обозначает идентификатор объекта.</p>
+<table>
+<thead>
+<tr>
+<th>Коллекция</th>
+<th>Поля для записи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/authors/</code></td>
+<td><code>name</code></td>
+</tr>
+<tr>
+<td><code>/api/publishers/</code></td>
+<td><code>name</code>, <code>description</code></td>
+</tr>
+<tr>
+<td><code>/api/categories/</code></td>
+<td><code>name</code></td>
+</tr>
+<tr>
+<td><code>/api/books/</code></td>
+<td><code>name</code>, <code>publisher</code> (ID), <code>year_of_publication</code>, <code>code</code>, <code>category</code> и <code>authors</code> (массивы ID)</td>
+</tr>
+<tr>
+<td><code>/api/rooms/</code></td>
+<td><code>name</code>, <code>number</code>, <code>capacity</code></td>
+</tr>
+</tbody>
+</table>
+<p>В ответе на <code>GET /api/books/{id}/</code> поле <code>authors</code> содержит объекты авторов. В ответе на <code>GET /api/publishers/{id}/</code> поле <code>books</code> содержит записи каталога этого издательства.</p>
+<h2 id="_4">Читатели<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>URL</th>
+<th>Входные данные и результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/api/readers/</code>, <code>/api/readers/{id}/</code></td>
+<td>Список читателей или карточка выбранного читателя.</td>
+</tr>
+<tr>
+<td>PUT, PATCH</td>
+<td><code>/api/readers/{id}/</code></td>
+<td>Обновляет анкету. Номер билета и дата последней регистрации доступны только для чтения в этих операциях.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/readers/register/</code></td>
+<td>Анкета, <code>library_card_number</code> и <code>reader_room</code> (ID зала). Создаёт читателя с действующим закреплением, возвращает карточку и статус 201.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/readers/{id}/unregister/</code></td>
+<td>Пустое тело. Закрывает действующее закрепление и возвращает сообщение.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/readers/{id}/enroll/</code></td>
+<td><code>reader_room</code> (ID). Записывает ранее выписанного читателя и возвращает его карточку.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/readers/{id}/transfer/</code></td>
+<td><code>reader_room</code> (ID нового зала). Возвращает новую запись истории закрепления.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/readers/{id}/reregister/</code></td>
+<td>Необязательный <code>library_card_number</code>. Обновляет дату последней регистрации, при передаче номера меняет билет, возвращает карточку.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/readers/expel-expired/</code></td>
+<td>Пустое тело. Выписывает читателей, чья последняя регистрация была более года назад. Возвращает <code>expelled_count</code>.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/readers/{id}/books/</code></td>
+<td>Книги на руках у читателя.</td>
+</tr>
+</tbody>
+</table>
+<p>Поля анкеты — <code>name</code>, <code>passport_series</code>, <code>passport_number</code>, <code>date_of_birth</code>, <code>address</code>, <code>phone_number</code>, <code>education</code> и необязательное <code>has_academic_degree</code> (по умолчанию <code>false</code>). Дата передаётся в формате <code>YYYY-MM-DD</code>. Допустимые значения <code>education</code> — <code>primary</code>, <code>secondary</code>, <code>higher</code>. В поле <code>last_registration_date</code> сервер записывает дату самостоятельно.</p>
+<h2 id="_5">Экземпляры, выдачи и история<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>URL</th>
+<th>Входные данные и результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/api/book-copies/</code>, <code>/api/book-copies/{id}/</code></td>
+<td>Список экземпляров или карточка экземпляра.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/book-copies/accept/</code></td>
+<td><code>book</code> и <code>reader_room</code> (ID). Принимает экземпляр в фонд, возвращает его карточку и статус 201.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/book-copies/{id}/transfer/</code></td>
+<td><code>reader_room</code> (ID нового зала). Возвращает новую запись истории закрепления.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/book-copies/{id}/scrap/</code></td>
+<td>Пустое тело. Списывает экземпляр, закрывает его закрепление и возвращает карточку экземпляра.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/loans/</code>, <code>/api/loans/{id}/</code></td>
+<td>Список выдач или карточка выдачи.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/loans/issue/</code></td>
+<td><code>reader</code> и <code>book_copy</code> (ID). Возвращает карточку новой выдачи и статус 201.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/loans/{id}/return/</code></td>
+<td>Пустое тело. Устанавливает дату возврата и возвращает карточку выдачи.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/reader-room-history/</code>, <code>/api/reader-room-history/{id}/</code></td>
+<td>История закрепления читателей за залами или отдельная запись.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/book-copy-room-history/</code>, <code>/api/book-copy-room-history/{id}/</code></td>
+<td>История закрепления экземпляров за залами или отдельная запись.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">Аналитика и отчёт<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>URL</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/api/analytics/overdue-readers/</code></td>
+<td>Читатели с просроченными выдачами.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/analytics/rare-book-readers/</code></td>
+<td>Читатели с открытыми выдачами редких книг.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/analytics/young-readers/</code></td>
+<td>Количество читателей младше 20 лет в поле <code>count</code>.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/analytics/education/</code></td>
+<td><code>total_readers</code> и доли в процентах в полях <code>primary</code>, <code>secondary</code>, <code>higher</code> и <code>academic_degree</code>.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/reports/monthly/?year=2026&amp;month=10</code></td>
+<td>Отчёт за указанный месяц. Параметры <code>year</code> и <code>month</code> обязательны.</td>
+</tr>
+</tbody>
+</table>
+<p>В аналитических списках читателей возвращаются только <code>id</code>, <code>name</code> и <code>library_card_number</code>. В месячном отчёте <code>daily_statistics</code> содержит даты, общие значения <code>total_books</code> и <code>total_readers</code> и массив <code>rooms</code> с полями <code>books_count</code> и <code>readers_count</code> по залам. Объект <code>new_readers</code> содержит общий итог <code>total</code> и массив <code>rooms</code> с полем <code>count</code> по залам. Каждый зал в отчёте описан полями <code>room_id</code>, <code>room_number</code> и <code>room_name</code>.</p>
+<p>Ошибки валидации полей и отказы сервиса, например повторная выдача занятого экземпляра, дают статус 400. Запрос карточки по отсутствующему идентификатору даёт 404. Успешные операции без отдельно указанного статуса возвращают 200.</p>
+<h2 id="_7">Пример выдачи и возврата<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>Получите токен сотрудника. Замените <code>staff</code> и <code>YOUR_PASSWORD</code> данными созданного аккаунта.</p>
+<pre><code class="language-bash">API=http://127.0.0.1:8000
+curl -sS &quot;$API/auth/token/login/&quot; \
+  -H 'Content-Type: application/json' \
+  -d '{&quot;username&quot;:&quot;staff&quot;,&quot;password&quot;:&quot;YOUR_PASSWORD&quot;}'
+</code></pre>
+<p>Скопируйте значение <code>auth_token</code> в переменную <code>TOKEN</code>. В примере читатель с ID 1 уже записан в зал, а экземпляр с ID 3 принят в фонд и свободен. Эти записи можно подготовить через <code>/api/readers/register/</code> и <code>/api/book-copies/accept/</code>, предварительно создав зал и запись книги в каталоге.</p>
+<pre><code class="language-bash">TOKEN='YOUR_TOKEN'
+curl -sS &quot;$API/api/loans/issue/&quot; \
+  -H &quot;Authorization: Token $TOKEN&quot; \
+  -H 'Content-Type: application/json' \
+  -d '{&quot;reader&quot;:1,&quot;book_copy&quot;:3}'
+</code></pre>
+<p>Ответ со статусом 201 содержит <code>id</code>, <code>reader</code>, <code>book_copy</code>, <code>issued_date</code> и <code>return_date</code>. До возврата <code>return_date</code> равно <code>null</code>. Для возврата подставьте полученный <code>id</code> выдачи вместо 7.</p>
+<pre><code class="language-bash">curl -sS -X POST &quot;$API/api/loans/7/return/&quot; \
+  -H &quot;Authorization: Token $TOKEN&quot;
+</code></pre>
+<p>В ответе поле <code>return_date</code> содержит дату возврата.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../implementation/" class="btn btn-neutral float-left" title="Реализация"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../implementation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

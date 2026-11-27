@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Модель данных - Web-программирование — Чуприн Сергей, K3339</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u041c\u043e\u0434\u0435\u043b\u044c \u0434\u0430\u043d\u043d\u044b\u0445";
+        var mkdocs_page_input_path = "lr_3/models.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Web-программирование — Чуприн Сергей, K3339
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Главная</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №1</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task1/">Задание 1 - UDP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task2/">Задание 2 - Вычисления через TCP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task3/">Задание 3 - Раздача HTML-страницы</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task4/">Задание 4 - Многопользовательский чат</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_1/task5/">Задание 5 - Веб-сервер (GET/POST)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_2/">Описание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_2/models/">Модель данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lr_2/interfaces/">Интерфейсы</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Лабораторная работа №3</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Описание</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Модель данных</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Сущности и связи</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">Ограничения</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">Хранение истории</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../implementation/">Реализация</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../interfaces/">Интерфейсы API</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Web-программирование — Чуприн Сергей, K3339</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Лабораторная работа №3</li>
+      <li class="breadcrumb-item active">Модель данных</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027/edit/master/docs/lr_3/models.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">Модель данных<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">Сущности и связи<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Модель</th>
+<th>Назначение и основные поля</th>
+<th>Связи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Author</code></td>
+<td>Автор, имя <code>name</code></td>
+<td>many-to-many с книгами</td>
+</tr>
+<tr>
+<td><code>Publisher</code></td>
+<td>Издательство, название <code>name</code> и описание <code>description</code></td>
+<td>Одно издательство может выпускать много книг</td>
+</tr>
+<tr>
+<td><code>Category</code></td>
+<td>Категория каталога, название <code>name</code></td>
+<td>many-to-many с книгами</td>
+</tr>
+<tr>
+<td><code>Book</code></td>
+<td>Запись каталога, название <code>name</code>, год издания <code>year_of_publication</code>, код <code>code</code></td>
+<td>FK → <code>Publisher</code>, M2M → <code>Author</code> и <code>Category</code></td>
+</tr>
+<tr>
+<td><code>BookCopy</code></td>
+<td>Физический экземпляр, дата списания <code>scrapped_at</code></td>
+<td>FK → <code>Book</code></td>
+</tr>
+<tr>
+<td><code>Reader</code></td>
+<td>Читатель, номер билета, ФИО, паспорт, дата рождения, адрес, телефон, образование, наличие учёной степени и дата последней регистрации</td>
+<td>Один читатель может иметь несколько выдач и записей истории</td>
+</tr>
+<tr>
+<td><code>ReaderRoom</code></td>
+<td>Читальный зал, название <code>name</code>, номер <code>number</code> и вместимость <code>capacity</code></td>
+<td>Один зал может фигурировать во многих записях истории</td>
+</tr>
+<tr>
+<td><code>Loan</code></td>
+<td>Выдача экземпляра, даты выдачи <code>issued_date</code> и возврата <code>return_date</code></td>
+<td>FK → <code>Reader</code>, FK → <code>BookCopy</code></td>
+</tr>
+<tr>
+<td><code>ReaderRoomHistory</code></td>
+<td>Период закрепления читателя за залом, даты начала и окончания, причина <code>reason</code></td>
+<td>FK → <code>Reader</code>, FK → <code>ReaderRoom</code></td>
+</tr>
+<tr>
+<td><code>BookCopyRoomHistory</code></td>
+<td>Период нахождения экземпляра в зале, даты начала и окончания</td>
+<td>FK → <code>BookCopy</code>, FK → <code>ReaderRoom</code></td>
+</tr>
+</tbody>
+</table>
+<p>Аккаунты Django используются для входа в систему. У модели <code>Reader</code> нет связи с аккаунтом Django. Запись читателя заводит сотрудник библиотеки.</p>
+<h2 id="_3">Ограничения<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Уникальны код книги, название категории, номер зала и номер читательского билета. Уникальность паспорта проверяется по паре «серия и номер».</li>
+<li>Серия паспорта содержит четыре цифры, номер — шесть. Год издания ограничен диапазоном от 1400 до 2026 включительно на уровне модели и базы данных.</li>
+<li>Внешние ключи используют <code>on_delete=models.PROTECT</code>. Например, удалить читателя, на которого ссылается выдача, нельзя.</li>
+<li>Открытая выдача имеет <code>return_date = null</code>. Значение <code>scrapped_at = null</code> означает, что экземпляр числится в фонде.</li>
+</ul>
+<h2 id="_4">Хранение истории<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>Действующее закрепление имеет <code>end_date = null</code>. Перевод закрывает прежнюю запись и открывает новую с той же датой начала. При подсчёте за день дата начала включается в период, а дата окончания исключается. Например, если экземпляр переведён 12 ноября, в отчёте за этот день он учитывается в новом зале.</p>
+<p>Причина <code>registration</code> отмечает первичную запись или запись ранее выписанного читателя. Причина <code>transfer</code> отмечает перевод между залами. Перерегистрация обновляет дату последней регистрации читателя и при необходимости номер билета, сохраняя действующее закрепление за залом.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Описание"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../implementation/" class="btn btn-neutral float-right" title="Реализация">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Cubigator/ITMO_ICT_WebDevelopment_2026-2027" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../implementation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
